@@ -5,8 +5,8 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        arch: [arm64]
-        compiler: [gcc]
+        arch: [arm64, arm]
+        compiler: [gcc, clang]
     env:
       ARCH: ${{ matrix.arch }}
     steps:
