@@ -1,12 +1,12 @@
-name: Build
+name: DongleBuild
 on: [push, pull_request]
 jobs:
   build:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        arch: [arm64, arm]
-        compiler: [gcc, clang]
+        arch: [arm64]
+        compiler: [gcc]
     env:
       ARCH: ${{ matrix.arch }}
     steps:
