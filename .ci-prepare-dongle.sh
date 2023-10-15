@@ -19,8 +19,8 @@ nproc && grep Mem /proc/meminfo && df -hT .
 case "$1" in
 gcc)
 	case "$ARCH" in
-		arm64)	gcc_toolchain=aarch64-none-elf ;;
-		arm)	gcc_toolchain=arm-none-eabi ;;
+		arm64)	gcc_toolchain=aarch64-linux-gnu ;;
+		arm)	gcc_toolchain=arm-linux-gnu ;;
 	esac
 	#apk add "gcc-$gcc_toolchain"
 	MAKE_OPTS="CROSS_COMPILE=$gcc_toolchain-"
