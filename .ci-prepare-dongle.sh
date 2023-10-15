@@ -37,7 +37,7 @@ cat > .ci-build.sh <<EOF
 #!/bin/sh
 # SPDX-License-Identifier: GPL-2.0-only
 set -eux
-
+make clean
 #cat arch/arm64/configs/msm8916_defconfig arch/arm/configs/msm8916_defconfig.part > arch/arm/configs/msm8916_defconfig
 #make $MAKE_OPTS msm8916_defconfig
 echo CONFIG_WERROR=y >> .config
