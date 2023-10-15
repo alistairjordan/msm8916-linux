@@ -48,7 +48,7 @@ export LINUX_VERSION=\$(cat debian/linux-image/DEBIAN/control | grep "Version: "
 export LINUX_ARCH=\$(cat debian/linux-image/DEBIAN/control | grep "Architecture: " | sed "s/Architecture: //")
 export LINUX_DEB=$(echo "\${LINUX_PACKAGE}_\${LINUX_VERSION}_\${LINUX_ARCH}.deb")
 echo "DPKG=\${LINUX_DEB}" >> $GITHUB_OUTPUT
-echo "${LINUX_DEB}" > deb_name
+echo "\${LINUX_DEB}" > deb_name
 cat ${GITHUB_OUTPUT}
 EOF
 chmod +x .ci-build.sh
