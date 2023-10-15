@@ -6,14 +6,14 @@ set -eux
 nproc && grep Mem /proc/meminfo && df -hT .
 
 # Install Linux build dependencies
-apk add build-base bison findutils flex gmp-dev mpc1-dev mpfr-dev openssl-dev perl
+#pk add build-base bison findutils flex gmp-dev mpc1-dev mpfr-dev openssl-dev perl
 
-if [ -n "${DRONE-}" ]; then
+#if [ -n "${DRONE-}" ]; then
 	# Workaround problem with faccessat2() on Drone CI
-	wget https://gist.githubusercontent.com/TravMurav/36c83efbc188115aa9b0fc7f4afba63e/raw/faccessat.c -P /opt
-	gcc -O2 -shared -o /opt/faccessat.so /opt/faccessat.c
-	export LD_PRELOAD=/opt/faccessat.so
-fi
+#	wget https://gist.githubusercontent.com/TravMurav/36c83efbc188115aa9b0fc7f4afba63e/raw/faccessat.c -P /opt
+#	gcc -O2 -shared -o /opt/faccessat.so /opt/faccessat.c
+#	export LD_PRELOAD=/opt/faccessat.so
+#fi
 
 # Setup compiler
 case "$1" in
@@ -22,11 +22,11 @@ gcc)
 		arm64)	gcc_toolchain=aarch64-none-elf ;;
 		arm)	gcc_toolchain=arm-none-eabi ;;
 	esac
-	apk add "gcc-$gcc_toolchain"
+	#apk add "gcc-$gcc_toolchain"
 	MAKE_OPTS="CROSS_COMPILE=$gcc_toolchain-"
 	;;
 clang)
-	apk add clang lld llvm
+	#apk add clang lld llvm
 	MAKE_OPTS="LLVM=1"
 	;;
 esac
