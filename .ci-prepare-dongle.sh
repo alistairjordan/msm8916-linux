@@ -38,10 +38,10 @@ cat > .ci-build.sh <<EOF
 # SPDX-License-Identifier: GPL-2.0-only
 set -eux
 
-#cat arch/arm64/configs/msm8916_defconfig arch/arm/configs/msm8916_defconfig.part > arch/arm/configs/msm8916_defconfig
-#make $MAKE_OPTS msm8916_defconfig
-#echo CONFIG_WERROR=y >> .config
-#make $MAKE_OPTS
+cat arch/arm64/configs/msm8916_defconfig arch/arm/configs/msm8916_defconfig.part > arch/arm/configs/msm8916_defconfig
+make $MAKE_OPTS msm8916_defconfig
+echo CONFIG_WERROR=y >> .config
+make $MAKE_OPTS
 make $MAKE_OPTS deb-pkg
 LINUX_PACKAGE=\$(cat debian/linux-image/DEBIAN/control | grep "Package: " | sed "s/Package: //")
 LINUX_VERSION=\$(cat debian/linux-image/DEBIAN/control | grep "Version: " | sed "s/Version: //")
