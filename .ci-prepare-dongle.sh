@@ -47,6 +47,6 @@ LINUX_PACKAGE=\$(cat debian/linux-image/DEBIAN/control | grep "Package: " | sed 
 LINUX_VERSION=\$(cat debian/linux-image/DEBIAN/control | grep "Version: " | sed "s/Version: //")
 LINUX_ARCH=\$(cat debian/linux-image/DEBIAN/control | grep "Architecture: " | sed "s/Architecture: //")
 LINUX_DEB=$(echo "\${LINUX_PACKAGE}_\${LINUX_VERSION}_\${LINUX_ARCH}.deb")
-echo "DPKG=\${LINUX_DEB}" >> $GITHUB_ENV
+echo "DPKG=\${LINUX_DEB}" >> $GITHUB_OUTPUT
 EOF
 chmod +x .ci-build.sh
