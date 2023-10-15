@@ -11,10 +11,10 @@ jobs:
       ARCH: ${{ matrix.arch }}
     steps:
     - uses: actions/checkout@v3
-    - uses: jirutka/setup-alpine@v1
+#    - uses: jirutka/setup-alpine@v1
     - name: Prepare build environment
       run: ./.ci-prepare-dongle.sh ${{ matrix.compiler }}
-      shell: alpine.sh --root {0}
+#      shell: alpine.sh --root {0}
     - name: Build
       run: ./.ci-build.sh
-      shell: alpine.sh {0}
+#      shell: alpine.sh {0}
