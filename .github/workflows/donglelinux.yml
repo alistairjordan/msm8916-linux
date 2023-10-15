@@ -37,7 +37,7 @@ jobs:
         draft: false
         prerelease: false
     - name: Upload Release Asset
-      id: upload-release-asset 
+      id: upload-release-asset-debian
       uses: actions/upload-release-asset@v1
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -46,3 +46,13 @@ jobs:
         asset_path: ../${{ steps.build.outputs.DPKG }}
         asset_name: release.deb
         asset_content_type: application/deb
+    - name: Upload Release Asset
+      id: upload-release-asset-dtb
+      uses: actions/upload-release-asset@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        upload_url: ${{ steps.create_release.outputs.upload_url }} # This pulls from the CREATE RELEASE step above, referencing it's ID to get its outputs object, which include a `upload_url`. See this blog post for more info: https://jasonet.co/posts/new-features-of-github-actions/#passing-data-to-future-steps 
+        asset_path: "arch/arm64/boot/dts/qcom/msm8916-thwc-ufi001c.dtb"
+        asset_name: release.dtb
+        asset_content_type: application/dtb
