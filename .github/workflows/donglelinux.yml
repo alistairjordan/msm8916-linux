@@ -17,7 +17,10 @@ jobs:
 #      shell: alpine.sh --root {0}
     - name: Build
       id: build
-      run: ./.ci-build.sh
+      run: |
+        ./.ci-build.sh
+        echo "DPKG=\${LINUX_DEB}" >> $GITHUB_OUTPUT
+        cat $GITHUB_OUTPUT
 #      shell: alpine.sh {0}
     - name: Create Release
       id: create_release
