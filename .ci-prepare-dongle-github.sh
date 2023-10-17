@@ -6,7 +6,7 @@ set -eux
 nproc && grep Mem /proc/meminfo && df -hT .
 
 # Install Linux build dependencies
-apk add build-base bison findutils flex gmp-dev mpc1-dev mpfr-dev openssl-dev perl
+apk add build-base bison findutils flex gmp-dev mpc1-dev mpfr-dev openssl-dev perl git
 
 if [ -n "${DRONE-}" ]; then
 	# Workaround problem with faccessat2() on Drone CI
