@@ -127,9 +127,9 @@ debian-orig: private orig-name = $(source)_$(version).orig.tar$(debian-orig-suff
 debian-orig: mkdebian-opts = --need-source
 debian-orig: linux.tar$(debian-orig-suffix) debian
 	$(Q)if [ "$(df  --output=target .. 2>/dev/null)" = "$(df --output=target $< 2>/dev/null)" ]; then \
-		ln -f $< ../$(orig-name); \
+		ln -f $< $(orig-name); \
 	else \
-		cp $< ../$(orig-name); \
+		cp $< $(orig-name); \
 	fi
 
 KBUILD_PKG_ROOTCMD ?= 'fakeroot -u'
@@ -180,7 +180,7 @@ compress-tar.xz  = -I "$(XZ)"
 compress-tar.zst = -I "$(ZSTD)"
 
 quiet_cmd_tar = TAR     $@
-      cmd_tar = cd $<; tar cf ../$@ $(compress-tar$(suffix $@)) --owner=root --group=root --sort=name *
+      cmd_tar = cd $<; tar cf $@ $(compress-tar$(suffix $@)) --owner=root --group=root --sort=name *
 
 dir-tarballs := $(addprefix linux-$(KERNELRELEASE)-$(ARCH), .tar .tar.gz .tar.bz2 .tar.xz .tar.zst)
 
